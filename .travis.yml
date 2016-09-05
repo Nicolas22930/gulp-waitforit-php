@@ -1,0 +1,17 @@
+sudo: required
+dist: trusty
+language: mega
+
+php:
+  - 5.4
+  - 7.0
+  - hhvm
+node_js:
+  - 4.0.0
+ 
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+  - npm install --global gulp-cli
+
+script: phpunit

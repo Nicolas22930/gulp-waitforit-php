@@ -1,0 +1,26 @@
+{
+    "name": "blunt1337/gulp-waitforit",
+    "description": "Help PHP to wait for gulp to finish all it's watchers",
+    "license": "Apache-2.0",
+    "keywords": ["gulp","wait","lock"],
+	"version": "1.0.0",
+    "authors": [
+        {
+            "name": "Olivier",
+            "email": "business@blunt.sh",
+			"homepage": "http://blunt.sh"
+        }
+    ],
+    "require": {
+		"php": "^5.4 || ^7.0",
+	},
+	"repositories": [],
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src"
+        }
+    }
+}
