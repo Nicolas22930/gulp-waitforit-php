@@ -20,11 +20,11 @@ $gulp = new GulpWaitforit();
 $gulp->wait();
 ```
 Now gulp need to tell us when to wait.
-So first let's get our module ```npm install --save-dev gulp-waitforit```. A simple gulpfile.js that compiles sass files:
+So first let's get our module ```npm install --save-dev gulp-waitforit```. And add a simple gulpfile.js that compiles sass files:
 ```js
 var gulp = require('gulp'),
 	wait4it = require('gulp-waitforit')(gulp),
-	// Now that waitforit is instanciate errors are catched
+	// Now that waitforit is instanciated, errors are catched
 	sass = require('sass');
 
 // A simple sass compilation
@@ -58,7 +58,7 @@ $gulp = new GulpWaitforit([
 	'log_path' => 'gulp.log',
 ]);
 ```
-Less for the gulp module:
+A bit less options for the gulp module:
 ```js
 var gulp = require('gulp'),
 	wait4it = require('gulp-waitforit')(gulp, {
@@ -73,4 +73,4 @@ var gulp = require('gulp'),
 If your want to kill the background process that PHP has started. You can open a terminal, go to the gulpfile's directory, and type `gulp waitforit:kill`
 
 ##### To suggest a feature, report a bug, or general discussion: 
-http://github.com/blunt1337/gulp-waitforit-js/issues/
+http://github.com/blunt1337/gulp-waitforit-php/issues/
