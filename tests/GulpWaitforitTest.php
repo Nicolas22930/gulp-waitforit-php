@@ -5,6 +5,9 @@ class GulpWaitforitTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->cleanup();
 		
+		// Create a file to watch
+		file_put_contents(__DIR__.'/plz.wait', 'Dont wait for now');
+		
 		// Start gulp
 		$waiter = new GulpWaitforit(['gulp_dir' => __DIR__]);
 		$waiter->wait();
@@ -18,8 +21,8 @@ class GulpWaitforitTest extends \PHPUnit_Framework_TestCase
 			throw new Exception('Failed to install dependency automatically');
 		}
 		
-		// Restest gulp and it should take more than 10sec
-		file_put_contents(__DIR__.'/plz.wait', 'Wait!');
+		// Retest gulp and it should take more than 10sec
+		file_put_contents(__DIR__.'/plz.wait', 'Wait now!');
 		usleep(500000);
 		
 		$time = microtime(true);
@@ -33,9 +36,10 @@ class GulpWaitforitTest extends \PHPUnit_Framework_TestCase
 		}
 		
 		// Exit background gulp
-		exec('cd '.escapeshellarg(__DIR__).'; gulp service:kill', $_, $exitcode);
+		exec('cd '.escapeshellarg(__DIR__).'; gulp waitforit:kill 2>&1', $output, $exitcode);
 		if ($exitcode != 0) {
-			throw new Exception('Failed to stop the background process');
+			$output = implode("\n", $output);
+			throw new Exception("Failed to stop the background process ($exitcode): $output");
 		}
 	}
 	
